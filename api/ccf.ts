@@ -28,6 +28,7 @@ async function fetchData(username: string): Promise<UserRatingInfo> {
     const user = data.users;
     if (user.length==0) return { rating: 0, text: 'N/A' };
     let user0=user[0];
+    if(user0.ccfLevel==0) return { rating: 0,text: "暂无CCF等级", uid: user0.uid }
     return {rating: user0.ccfLevel,text: "CCF"+user0.ccfLevel+"级", uid: user0.uid }
 }
 
@@ -39,6 +40,7 @@ async function getBadgeImage(username: string, data: UserRatingInfo, style: stri
     const params = new URLSearchParams({
         longCache: 'true',
         style,
+        link: `https://www.luogu.com.cn/user/`+data.uid,
     }).toString();
 
     console.log(params);
