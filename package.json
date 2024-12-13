@@ -1,0 +1,14 @@
+{
+  "name": "hydro-rating",
+  "author": "Baoshuo <i@baoshuo.ren> and Yangrenrui <yangrenruiyrr@163.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@vercel/node": "^1.14.0",
+    "node-fetch": "2",
+    "node-html-parser": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/node-fetch": "^2.6.2",
+    "typescript": "^4.6.3"
+  }
+}
