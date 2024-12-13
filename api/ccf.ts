@@ -40,7 +40,6 @@ async function getBadgeImage(username: string, data: UserRatingInfo, style: stri
         longCache: 'true',
         style,
         logo,
-        link: `https://www.luogu.com.cn/user/`+data.uid,
     }).toString();
 
     console.log(params);
@@ -69,6 +68,6 @@ export default async (request: VercelRequest, response: VercelResponse) => {
                 .send(data);
         })
         .catch(() => {
-            response.status(500).send('errorat72');
+            response.status(500).send('error');
         });
 };
