@@ -15,9 +15,6 @@ function escape(username: string) {
 }
 
 function getRatingColor(rating: number) {
-    if (rating >= 8) return 'ffc116';
-    if (rating >= 6) return '3498db';
-    if (rating >= 3) return '5eb95e';
     return '808080';
 }
 async function fetchData(username: string): Promise<UserRatingInfo> {
