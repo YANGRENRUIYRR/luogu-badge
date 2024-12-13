@@ -40,6 +40,7 @@ async function getBadgeImage(username: string, data: UserRatingInfo, style: stri
     const params = new URLSearchParams({
         longCache: 'true',
         style,
+        logo,
         link: `https://www.luogu.com.cn/user/`+data.uid,
     }).toString();
 
