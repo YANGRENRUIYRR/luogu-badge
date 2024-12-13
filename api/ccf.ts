@@ -32,7 +32,7 @@ async function fetchData(username: string): Promise<UserRatingInfo> {
     const user = data.users;
     if (user.length==0) return { rating: 0, text: 'N/A' };
     let user0=user[0];
-    return {rating: rat.toFixed(2),text: rat.toFixed(2).toString(), uid: user._id }
+    return {rating: user0.ccfLevel,text: "CCF"+user0.ccfLevel+"级", uid: user0.uid }
 }
 
 async function getBadgeImage(username: string, data: UserRatingInfo, style: string) {
@@ -44,7 +44,7 @@ async function getBadgeImage(username: string, data: UserRatingInfo, style: stri
         longCache: 'true',
         style,
         logo,
-        link: `https://hydro.ac/user/`+data.uid,
+        link: `https://www.luogu.com.cn/user/`+data.uid,
     }).toString();
 
     console.log(params);
