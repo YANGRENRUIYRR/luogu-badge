@@ -30,14 +30,8 @@ async function fetchData(username: string): Promise<UserRatingInfo> {
     if (!res.ok) return { rating: 0, text: 'N/A' };
     const data = await res.json();
     const user = data.users;
-    if (user==null) return { rating: 0, text: 'N/A' };
-    let rat=0;
-    let userrp=user.rpInfo;
-    if(userrp.problem!=undefined) rat+=userrp.problem;
-    if(userrp.contest!=undefined) rat+=userrp.contest;
-    if(userrp.contribution!=undefined) rat+=userrp.contribution;
-    if(userrp.submissions!=undefined) rat+=userrp.submissions;
-    if(rat==0) return { rating: 0, text: 'unrated', uid: user._id}
+    if (user.length==0) return { rating: 0, text: 'N/A' };
+    let user0=user[0];
     return {rating: rat.toFixed(2),text: rat.toFixed(2).toString(), uid: user._id }
 }
 
