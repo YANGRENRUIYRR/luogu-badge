@@ -15,7 +15,7 @@ function escape(username: string) {
 }
 
 function getRatingColor(rating: number) {
-    if (rating >= 8) return 'FF0000';
+    if (rating >= 8) return 'FFD700';
     if (rating >= 6) return '0E90D2';
     if (rating >= 3) return '5EB95E';
     return '808080';
