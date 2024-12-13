@@ -1,8 +1,8 @@
 {
     "routes": [
         {
-            "src": "/rating",
-            "dest": "/api/rating.ts"
+            "src": "/ccf_badge",
+            "dest": "/api/ccf.ts"
         },
         {
             "src": "/",
