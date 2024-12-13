@@ -20,16 +20,29 @@ function getRatingColor(rating: number) {
     if (rating >= 3) return '5eb95e';
     return '808080';
 }
-
 async function fetchData(username: string): Promise<UserRatingInfo> {
-    const res = await fetch("https://www.luogu.com.cn/api/user/search?keyword="+username);
+    const res = await fetch("https://hydro.ac/api", {
+        headers: [
+            ["content-type", "application/json"],
+            ["referer", "https://hydro.ac/"],
+        ],
+        body: JSON.stringify({"query":"query Example($name: String!) {\n  user(uname: $name) {\n    rpInfo\n    _id\n  }\n}","variables":{"name": username },"operationName":"Example"}),
+        method: "POST",
+    });
     if (!res.ok) return { rating: 0, text: 'N/A' };
     const data = await res.json();
-    const user = data.users;
-    if (user.length==0) return { rating: 0, text: 'N/A' };
-    let user0=user[0];
-    return {rating: user0.ccfLevel,text: "CCF"+user0.ccfLevel+"级", uid: user0.uid }
+    const user = data.data.user;
+    if (user==null) return { rating: 0, text: 'N/A' };
+    let rat=0;
+    let userrp=user.rpInfo;
+    if(userrp.problem!=undefined) rat+=userrp.problem;
+    if(userrp.contest!=undefined) rat+=userrp.contest;
+    if(userrp.contribution!=undefined) rat+=userrp.contribution;
+    if(userrp.submissions!=undefined) rat+=userrp.submissions;
+    if(rat==0) return { rating: 0, text: 'unrated', uid: user._id}
+    return {rating: rat.toFixed(2),text: rat.toFixed(2).toString(), uid: user._id }
 }
+
 
 async function getBadgeImage(username: string, data: UserRatingInfo, style: string) {
     const color = getRatingColor(data.rating);
