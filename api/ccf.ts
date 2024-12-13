@@ -15,13 +15,9 @@ function escape(username: string) {
 }
 
 function getRatingColor(rating: number) {
-    if (rating >= 430) return 'FF0000';
-    if (rating >= 360) return 'FF8000';
-    if (rating >= 240) return 'C0C000';
-    if (rating >= 160) return '0000FF';
-    if (rating >= 80) return '00C0C0';
-    if (rating >= 40) return '008000';
-    if (rating >= 20) return '804000';
+    if (rating >= 8) return 'FF0000';
+    if (rating >= 6) return '0E90D2';
+    if (rating >= 3) return '5EB95E';
     return '808080';
 }
 
