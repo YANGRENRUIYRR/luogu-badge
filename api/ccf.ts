@@ -39,7 +39,6 @@ async function getBadgeImage(username: string, data: UserRatingInfo, style: stri
     const params = new URLSearchParams({
         longCache: 'true',
         style,
-        logo,
     }).toString();
 
     console.log(params);
