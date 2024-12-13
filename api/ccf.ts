@@ -29,7 +29,7 @@ async function fetchData(username: string): Promise<UserRatingInfo> {
     const res = await fetch("https://www.luogu.com.cn/api/user/search?keyword="+username);
     if (!res.ok) return { rating: 0, text: 'N/A' };
     const data = await res.json();
-    const user = data.data.user;
+    const user = data.users;
     if (user==null) return { rating: 0, text: 'N/A' };
     let rat=0;
     let userrp=user.rpInfo;
