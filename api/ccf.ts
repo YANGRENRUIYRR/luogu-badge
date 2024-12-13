@@ -26,14 +26,7 @@ function getRatingColor(rating: number) {
 }
 
 async function fetchData(username: string): Promise<UserRatingInfo> {
-    const res = await fetch("https://hydro.ac/api", {
-        headers: [
-            ["content-type", "application/json"],
-            ["referer", "https://hydro.ac/"],
-        ],
-        body: JSON.stringify({"query":"query Example($name: String!) {\n  user(uname: $name) {\n    rpInfo\n    _id\n  }\n}","variables":{"name": username },"operationName":"Example"}),
-        method: "POST",
-    });
+    const res = await fetch("https://www.luogu.com.cn/api/user/search?keyword="+username);
     if (!res.ok) return { rating: 0, text: 'N/A' };
     const data = await res.json();
     const user = data.data.user;
