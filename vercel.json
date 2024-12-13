@@ -1,7 +1,7 @@
 {
     "routes": [
         {
-            "src": "/ccf_badge",
+            "src": "/badge/ccf",
             "dest": "/api/ccf.ts"
         },
         {
