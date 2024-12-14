@@ -5,6 +5,10 @@
             "dest": "/api/ccf.ts"
         },
         {
+            "src": "/badge/color",
+            "dest": "/api/color.ts"
+        },
+        {
             "src": "/",
             "status": 302,
             "headers": {
