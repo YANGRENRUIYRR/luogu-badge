@@ -22,6 +22,7 @@ function getRatingColor(rating: string) {
     if (rating == 'Blue') return '0e90d2';
     if (rating == 'Gray') return 'bfbfbf';
     if (rating == 'Brown') return 'ad8b00';
+    if (rating == 'Cheater') return 'ad8b00';
     return '808080';
 }
 function geta(rating: string) {
@@ -32,6 +33,7 @@ function geta(rating: string) {
     if (rating == 'Blue') return '蓝';
     if (rating == 'Gray') return '灰';
     if (rating == 'Brown') return '棕';
+    if (rating == 'Cheater') return '棕';
 }
 async function fetchData(username: string): Promise<UserRatingInfo> {
     const res = await fetch("https://www.luogu.com.cn/api/user/search?keyword="+username);
