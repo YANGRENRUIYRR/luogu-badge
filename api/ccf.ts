@@ -20,7 +20,11 @@ function getRatingColor(rating: number) {
     if (rating >= 3) return '5eb95e';
     return '808080';
 }
-
+function geta(rating: number) {
+    if (rating >= 8) return '金';
+    if (rating >= 6) return '蓝';
+    if (rating >= 3) return '绿';
+}
 async function fetchData(username: string): Promise<UserRatingInfo> {
     const res = await fetch("https://www.luogu.com.cn/api/user/search?keyword="+username);
     if (!res.ok) return { rating: 0, text: 'N/A' };
@@ -29,7 +33,7 @@ async function fetchData(username: string): Promise<UserRatingInfo> {
     if (user.length==0) return { rating: 0, text: 'N/A' };
     let user0=user[0];
     if(user0.ccfLevel==0) return { rating: 0,text: "暂无CCF等级", uid: user0.uid }
-    return {rating: user0.ccfLevel,text: "CCF"+user0.ccfLevel+"级", uid: user0.uid }
+    return {rating: user0.ccfLevel,text: "CCF"+user0.ccfLevel+"级"+geta(user0.ccfLevel)+"勾", uid: user0.uid }
 }
 
 async function getBadgeImage(username: string, data: UserRatingInfo, style: string) {
