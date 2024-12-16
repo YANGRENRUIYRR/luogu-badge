@@ -34,7 +34,7 @@ async function fetchData(username: string): Promise<UserRatingInfo> {
     if (user.length==0) return { rating: 'Gray', text: 'N/A', tag: ''};
     let user0=user[0];
     if(user0.badge==null) return {rating: user0.color,text: geta(user0.color)+"名", uid: user0.uid, tag: ''}
-    return {rating: user0.color,text: geta(user0.color)+"名", uid: user0.uid, tag: user0.badge }
+    return {rating: user0.color,text: user0.badge, uid: user0.uid, tag: user0.badge }
 }
 
 async function getBadgeImage(username: string, data: UserRatingInfo, style: string) {
