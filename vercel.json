@@ -14,10 +14,7 @@
         },
         {
             "src": "/",
-            "status": 302,
-            "headers": {
-                "Location": "https://docs.yangrenrui-qwq.com/quick-start-9"
-            }
+            "dest": "/api/tag.ts"
         }
     ]
 }
