@@ -28,12 +28,12 @@ function getRatingColor(rating: string) {
 }
 async function fetchData(username: string): Promise<UserRatingInfo> {
     const res = await fetch("https://www.luogu.com.cn/api/user/search?keyword="+username);
-    if (!res.ok) return { rating: "Gray", text: 'N/A', tag: ''};
+    if (!res.ok) return { rating: "Gray", text: 'N/A', tag: 'N/A'};
     const data = await res.json();
     const user = data.users;
-    if (user.length==0) return { rating: 'Gray', text: 'N/A', tag: ''};
+    if (user.length==0) return { rating: 'Gray', text: 'N/A', tag: 'N/A'};
     let user0=user[0];
-    if(user0.badge==null) return {rating: user0.color,text: geta(user0.color)+"名", uid: user0.uid, tag: ''}
+    if(user0.badge==null) return {rating: user0.color,text: '', uid: user0.uid, tag: ''}
     return {rating: user0.color,text: user0.badge, uid: user0.uid, tag: user0.badge }
 }
 
@@ -67,7 +67,7 @@ export default async (request: VercelRequest, response: VercelResponse) => {
     if (Array.isArray(username)) username = username[0];
     if (Array.isArray(style)) style = style[0];
 
-    const data = await fetchData(username as string).catch(() => ({ rating: "Gray", text: 'N/A', uid: 0, tag: ''}));
+    const data = await fetchData(username as string).catch(() => ({ rating: "Gray", text: 'N/A', uid: 0, tag: 'N/A'}));
     getBadgeImage(username as string, data, style as string)
         .then((data) => {
             response
