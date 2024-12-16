@@ -26,16 +26,6 @@ function getRatingColor(rating: string) {
     if (rating == 'Cheater') return 'ad8b00';
     return '808080';
 }
-function geta(rating: string) {
-    if (rating == 'Purple') return '紫';
-    if (rating == 'Red') return '红';
-    if (rating == 'Orange') return '橙';
-    if (rating == 'Green') return '绿';
-    if (rating == 'Blue') return '蓝';
-    if (rating == 'Gray') return '灰';
-    if (rating == 'Brown') return '棕';
-    if (rating == 'Cheater') return '棕';
-}
 async function fetchData(username: string): Promise<UserRatingInfo> {
     const res = await fetch("https://www.luogu.com.cn/api/user/search?keyword="+username);
     if (!res.ok) return { rating: "Gray", text: 'N/A', tag: ''};
@@ -49,8 +39,10 @@ async function fetchData(username: string): Promise<UserRatingInfo> {
 async function getBadgeImage(username: string, data: UserRatingInfo, style: string) {
     const color = getRatingColor(data.rating);
     const escapedUsername = escape(username);
-    const escapedRatingText = escape(data.text);
-
+    let escapedRatingText = escape(data.text);
+    if(data.text==''){
+        escapedRatingText = escape("无TAG")
+    }
     const params = new URLSearchParams({
         longCache: 'true',
         style,
