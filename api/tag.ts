@@ -39,8 +39,8 @@ async function fetchData(username: string): Promise<UserRatingInfo> {
 async function getBadgeImage(username: string, data: UserRatingInfo, style: string) {
     const color = getRatingColor(data.rating);
     const escapedUsername = escape(username);
-    let escapedRatingText = escape(data.text);
-    if(data.text==''){
+    let escapedRatingText = escape(data.tag);
+    if(data.tag==''){
         escapedRatingText = escape("无TAG")
     }
     const params = new URLSearchParams({
