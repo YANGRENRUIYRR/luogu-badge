@@ -14,7 +14,7 @@
         },
         {
             "src": "/",
-            "dest": "/api/color.ts"
+            "dest": "/api/tag.ts"
         }
     ]
 }
