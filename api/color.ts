@@ -37,10 +37,10 @@ function geta(rating: string) {
 }
 async function fetchData(username: string): Promise<UserRatingInfo> {
     const res = await fetch("https://www.luogu.com.cn/api/user/search?keyword="+username);
-    if (!res.ok) return { rating: 0, text: 'N/A' };
+    if (!res.ok) return { rating: "Gray", text: 'N/A' };
     const data = await res.json();
     const user = data.users;
-    if (user.length==0) return { rating: 0, text: 'N/A' };
+    if (user.length==0) return { rating: 'Gray', text: 'N/A' };
     let user0=user[0];
     return {rating: user0.color,text: geta(user0.color)+"名", uid: user0.uid }
 }
@@ -73,7 +73,7 @@ export default async (request: VercelRequest, response: VercelResponse) => {
     if (Array.isArray(username)) username = username[0];
     if (Array.isArray(style)) style = style[0];
 
-    const data = await fetchData(username as string).catch(() => ({ rating: 0, text: 'N/A', uid: 0}));
+    const data = await fetchData(username as string).catch(() => ({ rating: "Gray", text: 'N/A', uid: 0}));
     getBadgeImage(username as string, data, style as string)
         .then((data) => {
             response
