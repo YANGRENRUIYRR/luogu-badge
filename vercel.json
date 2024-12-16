@@ -9,6 +9,10 @@
             "dest": "/api/color.ts"
         },
         {
+            "src": "/badge/tag",
+            "dest": "/api/tag.ts"
+        },
+        {
             "src": "/",
             "status": 302,
             "headers": {
