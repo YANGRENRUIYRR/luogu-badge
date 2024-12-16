@@ -8,6 +8,7 @@ interface UserRatingInfo {
     rating: string;
     text: string;
     uid: number;
+    tag: string;
 }
 
 function escape(username: string) {
